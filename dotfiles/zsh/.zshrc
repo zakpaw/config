@@ -1,6 +1,11 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
-plug "$HOME/.config/zsh/theme"
+plug "romkatv/powerlevel10k"
+plug "zap-zsh/atmachine-prompt"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "marlonrichert/zsh-autocomplete"
@@ -33,3 +38,6 @@ autoload -Uz compinit
 compinit
 
 eval "$(zoxide init zsh)"
+
+source $HOME/.config/zsh/theme/.p10k.zsh
+source $HOME/.config/zsh/theme/catppuccin_mocha.zsh
