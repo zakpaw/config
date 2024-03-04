@@ -26,12 +26,12 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 export MANPAGER="nvim"
 
-lolcat <<'EOF'
-     __  ,
- .--()°'.'
-'|, . ,'
- !_-(_\
-EOF
+# lolcat <<'EOF'
+#      __  ,
+#  .--()°'.'
+# '|, . ,'
+#  !_-(_\
+# EOF
 
 # completions
 autoload -Uz compinit

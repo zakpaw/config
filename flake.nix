@@ -30,7 +30,6 @@
           fd
           git
           zoxide
-          lolcat
           eza
           bat
           jq
