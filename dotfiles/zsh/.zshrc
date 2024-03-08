@@ -24,7 +24,8 @@ alias tree="eza --tree --icons"
 export PATH=$PATH:/usr/local/bin:/Users/zpawe/.toolbox/bin
 export VISUAL=nvim
 export EDITOR=$VISUAL
-export MANPAGER="nvim"
+export MANPAGER="nvim +Man!"
+export MANWIDTH=999
 
 # lolcat <<'EOF'
 #      __  ,
