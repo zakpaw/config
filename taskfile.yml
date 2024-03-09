@@ -1,0 +1,39 @@
+version: '3'
+
+tasks:
+  rebuild:
+    desc: "rebuilds the configuration if `init` was launched at least once."
+    preconditions:
+      - nix --version
+    cmds:
+      - darwin-rebuild switch --flake .
+
+  init:
+    desc: "build & apply the system configuration."
+    preconditions:
+      - nix --version
+    cmds:
+      - cmd: |
+          nix build .#darwinConfigurations.mb.system \
+          --extra-experimental-features 'nix-command flakes' && \
+          ./result/sw/bin/darwin-rebuild switch --flake .#mb
+
+  run-devshell:
+    dir: ./dotfiles
+    preconditions:
+      - nix --version
+    cmds:
+      - nix develop . -c zsh
+
+  pure-run-devshell:
+    dir: ./dotfiles
+    preconditions:
+      - docker --version
+    cmds:
+      - docker build -t nix - <<EOF
+            FROM nixos/nix
+            RUN nix-channel --update
+            WORKDIR /app
+        EOF
+      - docker run -v .:/app -it nix
+        # nix --extra-experimental-features "nix-command flakes" develop

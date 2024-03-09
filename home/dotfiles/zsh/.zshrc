@@ -21,11 +21,6 @@ alias ls="eza --icons"
 alias la="eza -a --icons"
 alias tree="eza --tree --icons"
 
-export PATH=$PATH:/usr/local/bin:/Users/zpawe/.toolbox/bin
-export VISUAL=nvim
-export EDITOR=$VISUAL
-export MANPAGER="nvim +Man!"
-export MANWIDTH=999
 
 # lolcat <<'EOF'
 #      __  ,
@@ -42,3 +37,4 @@ eval "$(zoxide init zsh)"
 
 source $HOME/.config/zsh/theme/.p10k.zsh
 source $HOME/.config/zsh/theme/catppuccin_mocha.zsh
+(( ! ${+functions[p10k]} )) || p10k finalize

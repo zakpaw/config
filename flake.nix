@@ -1,58 +1,50 @@
 {
+  description = "myos";
+
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    tpm = {
-      url = "github:tmux-plugins/tpm";
-      flake = false;
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    darwin.url = "github:lnl7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    darwin-custom-icons.url = "github:ryanccn/nix-darwin-custom-icons";
   };
 
-  outputs = {
+  outputs = inputs @ {
     nixpkgs,
-    flake-utils,
-    tpm,
+    home-manager,
+    darwin,
     ...
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-      inherit (pkgs) lib;
-    in {
-      devShells.default = pkgs.mkShell {
-        packages = with pkgs; [
-          zsh
-          tmux
-          neovim
-          ripgrep
-          fzf
-          fd
-          git
-          zoxide
-          eza
-          bat
-          jq
-          gcc
-        ];
+  }: let
+    system = "aarch64-darwin";
+    hostname = "mb";
+    username = "pawelzak";
+  in {
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
-        shellHook = ''
-          export HOME=$(mktemp -d)
-          export XDG_CACHE_HOME="$HOME/.cache"
-          export XDG_CONFIG_HOME="$HOME/.config"
-          export XDG_DATA_HOME="$HOME/.local/share"
-          export XDG_STATE_HOME="$HOME/.local/state"
-          export ZDOTDIR=$HOME/.config/zsh
-          export TMUX_TPM=${tpm}
+    darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
+      inherit system;
 
-          mkdir -p "$HOME/.config"
-          ${lib.getExe pkgs.xorg.lndir} -silent ${./dotfiles} $HOME/.config
+      modules = [
+        ./modules/apps.nix
+        ./modules/configuration.nix
 
-          cd "$HOME"
-          zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --keep --branch release-v1
-        '';
-      };
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.${username} = import ./home/home.nix;
+        }
 
-      formatter = nixpkgs.legacyPackages.${system}.alejandra;
-    });
+        inputs.darwin-custom-icons.darwinModules.default
+
+        {
+          _module.args = inputs // {inherit hostname username;};
+        }
+      ];
+    };
+  };
 }
