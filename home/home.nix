@@ -1,5 +1,9 @@
 # https://nix-community.github.io/home-manager/options.xhtml
-{pkgs, ...}: {
+{
+  pkgs,
+  devenv,
+  ...
+}: {
   home.stateVersion = "23.11";
 
   imports = [
@@ -20,6 +24,8 @@
     go-task
     pre-commit
     benthos
+    cachix
+    devenv.packages.${pkgs.system}.devenv
 
     # utils
     curl
@@ -42,5 +48,10 @@
     enable = true;
     userName = "pawelzak";
     userEmail = "zakpaw36@gmail.com";
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
 }
