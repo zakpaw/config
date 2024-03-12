@@ -14,8 +14,14 @@
   nix.settings = {
     trusted-users = [username];
     experimental-features = ["nix-command" "flakes"];
+    auto-optimise-store = true;
   };
   services.nix-daemon.enable = true;
+  nix.gc = {
+    automatic = true;
+    interval.Hour = 24;
+    options = "--delete-older-than 1w";
+  };
 
   # host & users configuration
   networking.hostName = hostname;
@@ -28,6 +34,7 @@
   };
 
   # system
+  programs.zsh.enable = true;
   system = {
     # activationScripts are executed on every system boot or run `darwin-rebuild`.
     activationScripts.postUserActivation.text = ''
@@ -40,6 +47,4 @@
   };
 
   security.pam.enableSudoTouchIdAuth = true;
-
-  programs.zsh.enable = true;
 }
