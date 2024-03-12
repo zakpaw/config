@@ -35,6 +35,7 @@
 
     shellAliases = {
       # code = "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code";
+      ".." = "cd ..";
       v = "nvim";
       vi = "nvim";
       vim = "nvim";
