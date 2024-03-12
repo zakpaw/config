@@ -29,20 +29,18 @@
       inherit system;
 
       modules = [
-        ./modules/apps.nix
-        ./modules/configuration.nix
+        {
+          _module.args = inputs // {inherit hostname username;};
+        }
+        ./host/configuration.nix
+
+        inputs.darwin-custom-icons.darwinModules.default
 
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${username} = import ./home/home.nix;
-        }
-
-        inputs.darwin-custom-icons.darwinModules.default
-
-        {
-          _module.args = inputs // {inherit hostname username;};
         }
       ];
     };

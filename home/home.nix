@@ -7,8 +7,8 @@
     ./tmux/tmux.nix
   ];
 
-  home.file.".config/alacritty".source = ./dotfiles/alacritty;
-  home.file.".config/nvim".source = ./dotfiles/nvim;
+  home.file.".config/alacritty".source = ./alacritty;
+  home.file.".config/nvim".source = ./nvim;
 
   home.packages = with pkgs; [
     # ide

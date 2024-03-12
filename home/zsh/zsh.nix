@@ -3,7 +3,7 @@
     enable = true;
     enableCompletion = true;
     enableAutosuggestions = true;
-    dotDir=".config/zsh";
+    dotDir = ".config/zsh";
 
     antidote = {
       enable = true;

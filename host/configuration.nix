@@ -4,13 +4,20 @@
   pkgs,
   ...
 }: {
-  # core
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  nix.package = pkgs.nix;
+  imports = [
+    ./apps.nix
+    ./icons/icons.nix
+  ];
 
+  # core
+  nix.package = pkgs.nix;
+  nix.settings = {
+    trusted-users = [username];
+    experimental-features = ["nix-command" "flakes"];
+  };
   services.nix-daemon.enable = true;
 
-  # Host & Users configuration
+  # host & users configuration
   networking.hostName = hostname;
   networking.computerName = hostname;
 
@@ -19,7 +26,6 @@
     home = "/Users/${username}";
     description = username;
   };
-  nix.settings.trusted-users = [username];
 
   # system
   system = {
@@ -36,15 +42,4 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   programs.zsh.enable = true;
-
-  # icons
-  environment.customIcons = {
-    enable = true;
-    icons = [
-      {
-        path = "${pkgs.alacritty}/Applications/Alacritty.app";
-        icon = ../icons/alacritty.icns;
-      }
-    ];
-  };
 }

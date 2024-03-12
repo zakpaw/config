@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     plugins = with pkgs; [
@@ -12,4 +11,3 @@
     extraConfig = builtins.readFile (builtins.toPath ./tmux.conf);
   };
 }
-
