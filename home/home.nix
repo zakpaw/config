@@ -26,6 +26,7 @@
     benthos
     cachix
     devenv.packages.${pkgs.system}.devenv
+    devbox
 
     # utils
     curl
