@@ -31,6 +31,7 @@
     # utils
     curl
     ripgrep
+    httpie
     fzf
     fd
     zoxide
