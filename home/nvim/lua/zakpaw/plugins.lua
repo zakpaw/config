@@ -42,11 +42,11 @@ return require("lazy").setup({
     -- git
     "tpope/vim-fugitive",
     "lewis6991/gitsigns.nvim",
-    { "ThePrimeagen/git-worktree.nvim", opts = {} },
+    { "ThePrimeagen/git-worktree.nvim",           opts = {} },
 
     -- mini
-    { "echasnovski/mini.files", version = false },
-    { "echasnovski/mini.surround", version = false },
+    { "echasnovski/mini.files",                   version = false },
+    { "echasnovski/mini.surround",                version = false },
 
     -- telescope
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -113,6 +113,12 @@ return require("lazy").setup({
 
     -- theme
     { "catppuccin/nvim", as = "catppuccin" },
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = true,
+        opts = ...
+    },
     "kyazdani42/nvim-web-devicons",
     {
         "nvim-lualine/lualine.nvim",

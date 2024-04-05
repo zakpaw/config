@@ -1,4 +1,4 @@
-import = ["/Users/pawelzak/.config/alacritty/catppuccin-mocha.toml"]
+import = ["/Users/pawelzak/.config/alacritty/gruvbox-light.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -14,6 +14,6 @@ style = "Bold"
 decorations = "buttonless"
 dynamic_padding = false
 dynamic_title = false
-opacity = 0.9
+opacity = 0.8
 startup_mode = "Maximized"
 title = "alacritty"

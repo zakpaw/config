@@ -26,11 +26,6 @@
         src = ./theme;
         file = "p10k.zsh";
       }
-      {
-        name = "catppuccin_mocha";
-        src = ./theme;
-        file = "catppuccin_mocha.zsh";
-      }
     ];
 
     shellAliases = {
