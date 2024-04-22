@@ -27,6 +27,7 @@
     cachix
     devenv.packages.${pkgs.system}.devenv
     devbox
+    nodejs_21
 
     # utils
     curl

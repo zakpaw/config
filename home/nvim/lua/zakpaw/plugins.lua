@@ -84,6 +84,7 @@ return require("lazy").setup({
     },
 
     -- other
+    "github/copilot.vim",
     "joerdav/templ.vim", -- go templ
     "christoomey/vim-tmux-navigator",
     "mbbill/undotree",
