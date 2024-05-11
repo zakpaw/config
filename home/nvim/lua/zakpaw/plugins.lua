@@ -107,10 +107,6 @@ return require("lazy").setup({
         dependencies = { "kevinhwang91/promise-async" },
         opts = {},
     },
-    {
-        "rest-nvim/rest.nvim",
-        dependencies = { { "nvim-lua/plenary.nvim" } },
-    },
 
     -- theme
     { "catppuccin/nvim", as = "catppuccin" },

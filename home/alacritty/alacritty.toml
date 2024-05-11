@@ -1,4 +1,4 @@
-import = ["/Users/pawelzak/.config/alacritty/gruvbox-light.toml"]
+import = ["/Users/pawel/.config/alacritty/gruvbox-light.toml"]
 
 [env]
 TERM = "xterm-256color"

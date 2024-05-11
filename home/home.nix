@@ -17,17 +17,13 @@
   home.packages = with pkgs; [
     # ide
     neovim
-    alacritty
 
     # dev
     gcc
     go-task
-    pre-commit
     benthos
     cachix
-    devenv.packages.${pkgs.system}.devenv
     devbox
-    nodejs_21
 
     # utils
     curl

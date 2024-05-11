@@ -19,7 +19,7 @@
   }: let
     system = "aarch64-darwin";
     hostname = "mb";
-    username = "pawelzak";
+    username = "pawel";
     specialArgs = inputs // {inherit hostname username;};
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;

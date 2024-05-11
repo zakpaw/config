@@ -3,7 +3,7 @@
     enable = true;
     icons = [
       {
-        path = "${pkgs.alacritty}/Applications/Alacritty.app";
+        path = "/Applications/Alacritty.app";
         icon = ./alacritty.icns;
       }
     ];

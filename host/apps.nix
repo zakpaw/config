@@ -8,15 +8,13 @@
     enable = true;
     onActivation.autoUpdate = false;
     taps = [
-      "homebrew/cask-fonts"
       "homebrew/services"
-      "homebrew/cask-versions"
     ];
-    # `brew install`
     brews = [
     ];
-    # `brew install --cask`
     casks = [
+        "alacritty"
+        "raycast"
     ];
   };
 }
