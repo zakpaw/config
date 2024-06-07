@@ -17,6 +17,7 @@
   home.packages = with pkgs; [
     # ide
     neovim
+    alacritty
 
     # dev
     gcc
@@ -26,6 +27,8 @@
     devbox
 
     # utils
+    cargo
+    nodejs_22
     curl
     ripgrep
     httpie
@@ -41,6 +44,7 @@
     glow
     btop
     nix-output-monitor
+    vscode-langservers-extracted
   ];
 
   programs.git = {
@@ -52,5 +56,13 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+              vscodevim.vim
+              yzhang.markdown-all-in-one
+      ];
   };
 }

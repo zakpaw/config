@@ -26,6 +26,11 @@
         src = ./theme;
         file = "p10k.zsh";
       }
+      {
+        name = "fzf-tab";
+        src = pkgs.zsh-fzf-tab;
+        file = "share/fzf-tab/fzf-tab.plugin.zsh";
+      }
     ];
 
     shellAliases = {
@@ -49,8 +54,14 @@
     };
 
     initExtra = ''
+      zstyle ':completion:*:git-checkout:*' sort false
+      zstyle ':completion:*:descriptions' format '[%d]'
+      zstyle ':completion:*' menu no
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+      zstyle ':fzf-tab:*' switch-group '<' '>'
       eval "$(zoxide init zsh)"
-      autoload -Uz compinit
+      eval "$(fzf --zsh)"
+      autoload -U compinit
       compinit
     '';
   };

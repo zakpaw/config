@@ -47,6 +47,7 @@ return require("lazy").setup({
     -- mini
     { "echasnovski/mini.files",                   version = false },
     { "echasnovski/mini.surround",                version = false },
+    { "echasnovski/mini.ai",                version = false },
 
     -- telescope
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },

@@ -21,6 +21,7 @@
     hostname = "mb";
     username = "pawel";
     specialArgs = inputs // {inherit hostname username;};
+    nixpkgsConfig.allowUnfree = true;
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
