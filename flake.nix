@@ -21,10 +21,25 @@
     hostname = "mb";
     username = "pawel";
     specialArgs = inputs // {inherit hostname username;};
-    nixpkgsConfig.allowUnfree = true;
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
+    # Standalone Home Manager configuration
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = specialArgs;
+      modules = [
+        ./home/home.nix
+        {
+          home = {
+            username = username;
+            homeDirectory = "/Users/${username}";
+          };
+        }
+      ];
+    };
+
+    # Darwin configuration (includes Home Manager)
     darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
       inherit system specialArgs;
 

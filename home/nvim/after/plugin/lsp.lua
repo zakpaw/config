@@ -40,7 +40,7 @@ local lang_servers = {
     "terraformls",
     "tflint",
     "nil_ls",
-    "tsserver",
+    "ts_ls",
     "dockerls",
     "gopls",
 }
