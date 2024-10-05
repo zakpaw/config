@@ -19,7 +19,10 @@
   services.nix-daemon.enable = true;
   nix.gc = {
     automatic = true;
-    interval.Hour = 24;
+  interval = {
+    Hour = 3;
+    Minute = 0;
+  };
     options = "--delete-older-than 1w";
   };
 
@@ -37,6 +40,7 @@
   programs.zsh.enable = true;
   system = {
     # activationScripts are executed on every system boot or run `darwin-rebuild`.
+    stateVersion = 5;
     activationScripts.postUserActivation.text = ''
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     '';
