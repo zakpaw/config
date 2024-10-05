@@ -11,6 +11,7 @@
       "homebrew/services"
     ];
     brews = [
+        "dep-tree"
     ];
     casks = [
         "alacritty"
