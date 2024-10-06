@@ -5,6 +5,17 @@ require("mason").setup()
 local lsp_config = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+-- a-h/templ
+lsp_config.html.setup({
+    capabilities = capabilities,
+    filetypes = { "html", "templ" },
+})
+
+lsp_config.htmx.setup({
+    capabilities = capabilities,
+    filetypes = { "html", "templ" },
+})
+
 -- github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 lsp_config["pyright"].setup {
     capabilities = capabilities,
@@ -29,7 +40,14 @@ lsp_config["tailwindcss"].setup {
         userLanguages = {
             templ = "html"
         }
-    }
+    },
+    settings = {
+        tailwindCSS = {
+            includeLanguages = {
+                templ = "html",
+            },
+        },
+    },
 }
 local lang_servers = {
     "marksman",

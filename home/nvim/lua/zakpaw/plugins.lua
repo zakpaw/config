@@ -85,7 +85,12 @@ return require("lazy").setup({
     },
 
     -- other
-    "github/copilot.vim",
+    {
+        "supermaven-inc/supermaven-nvim",
+        config = function()
+            require("supermaven-nvim").setup({})
+        end,
+    },
     "joerdav/templ.vim", -- go templ
     "christoomey/vim-tmux-navigator",
     "mbbill/undotree",

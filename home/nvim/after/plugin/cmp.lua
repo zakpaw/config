@@ -63,9 +63,9 @@ cmp.setup({
                 fallback()
             end
         end, {
-                "i",
-                "s",
-            }),
+            "i",
+            "s",
+        }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -75,9 +75,9 @@ cmp.setup({
                 fallback()
             end
         end, {
-                "i",
-                "s",
-            }),
+            "i",
+            "s",
+        }),
     }),
     formatting = {
         fields = { "kind", "abbr", "menu" },
@@ -102,10 +102,11 @@ cmp.setup({
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-        { name = 'nvim_lsp_signature_help'},
-        { name = 'nvim_lua', keyword_length = 2},
-        { name = 'vsnip', keyword_length = 2 },
-        { name = 'calc'},
+        { name = "supermaven" },
+        { name = 'nvim_lsp_signature_help' },
+        { name = 'nvim_lua',               keyword_length = 2 },
+        { name = 'vsnip',                  keyword_length = 2 },
+        { name = 'calc' },
     },
     experimental = {
         ghost_text = false,
