@@ -50,3 +50,4 @@ vim.keymap.set("n", "<leader>e", ":lua if not MiniFiles.close() then MiniFiles.o
 vim.keymap.set("n", "K", ":lua vim.lsp.buf.hover()<cr>")
 vim.keymap.set("n", "<F5>", ":UndotreeToggle<cr>")
 vim.keymap.set("n", "<C-e>", ":lua vim.diagnostic.open_float({'line'})<cr>")
+-- replace everywhere cfdo %s///g

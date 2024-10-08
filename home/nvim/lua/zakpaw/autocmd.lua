@@ -34,12 +34,20 @@ vim.api.nvim_create_autocmd("CursorHold", {
     end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+-- format on save
+vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "*",
     callback = function(event)
-        vim.lsp.buf.format({
-            async = false,
-            bufnr = event.bufnr,
-        })
-    end,
+        local filetype = vim.bo.filetype
+        if filetype == "templ" then
+            local filename = vim.fn.expand("%")
+            vim.fn.system(string.format("templ fmt %s", vim.fn.shellescape(filename)))
+            vim.cmd("edit!")
+        else
+            vim.lsp.buf.format({
+                async = false,
+                bufnr = event.bufnr,
+            })
+        end
+    end
 })
