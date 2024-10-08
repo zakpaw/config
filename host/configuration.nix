@@ -46,7 +46,9 @@
     '';
 
     defaults = {
+      dock.autohide = true;
       menuExtraClock.Show24Hour = true;
+      NSGlobalDomain.KeyRepeat = 2;
     };
   };
 
