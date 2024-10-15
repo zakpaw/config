@@ -44,7 +44,18 @@ vim.keymap.set("n", "gd", ":Telescope lsp_definitions<cr>", { silent = true })
 vim.keymap.set("n", "gr", ":Telescope lsp_references theme=dropdown<cr>")
 
 -- mini
-vim.keymap.set("n", "<leader>e", ":lua if not MiniFiles.close() then MiniFiles.open(...) end<cr>", { silent = true })
+vim.keymap.set("n", "<leader>e",
+    ":lua if not MiniFiles.close() then MiniFiles.open(vim.fn.expand('%:p')) end<cr>",
+    { silent = true }
+)
+vim.keymap.set("n", "<leader>r", ":lua if not MiniFiles.close() then MiniFiles.open(...) end<cr>", { silent = true })
+
+-- aider
+vim.api.nvim_set_keymap('n', '<leader>at', ':AiderRun<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>aa', ':AiderAddCurrentFile<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ar', ':AiderAddCurrentFileReadOnly<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>aw', ':AiderAddWeb<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>aq', ':AiderExit<CR>', { noremap = true, silent = true })
 
 -- other
 vim.keymap.set("n", "K", ":lua vim.lsp.buf.hover()<cr>")

@@ -26,7 +26,9 @@
     devbox
 
     # utils
+    deno
     cargo
+    rustup
     nodejs_22
     curl
     ripgrep

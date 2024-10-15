@@ -43,10 +43,11 @@
       ls = "eza --icons";
       la = "eza -a --icons";
       tree = "eza --tree --icons";
+      gls = "git ls-files";
     };
 
     sessionVariables = {
-      PATH = "$PATH:/usr/local/bin:/Users/zpawe/.toolbox/bin";
+      PATH = "$PATH:/usr/local/bin:/opt/homebrew/bin:/Users/zpawe/.toolbox/bin";
       VISUAL = "nvim";
       EDITOR = "$VISUAL";
       MANPAGER = "nvim +Man!";
@@ -61,6 +62,7 @@
       zstyle ':fzf-tab:*' switch-group '<' '>'
       eval "$(zoxide init zsh)"
       eval "$(fzf --zsh)"
+      export PATH="/opt/homebrew/bin/:$PATH"
       autoload -U compinit
       compinit
     '';

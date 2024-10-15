@@ -11,7 +11,8 @@ tasks:
     desc: "build & apply the system configuration."
     preconditions:
       - nix --version
-    cmd: nix build .#darwinConfigurations.mb.system \
+    cmd: |
+      nix build .#darwinConfigurations.mb.system \
       --extra-experimental-features 'nix-command flakes' && \
       ./result/sw/bin/darwin-rebuild switch --flake .#mb
 

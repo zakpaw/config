@@ -15,7 +15,9 @@
     ];
 
     brews = [
+        "aider"
         "dep-tree"
+        "xcodegen"
     ];
     casks = [
         "alacritty"

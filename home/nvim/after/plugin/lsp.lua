@@ -35,7 +35,7 @@ lsp_config["lua_ls"].setup {
 }
 lsp_config["tailwindcss"].setup {
     capabilities = capabilities,
-    filetypes = { "css", "postcss", "sass", "scss", "vue", "svelte", "templ" },
+    filetypes = { "css", "postcss", "sass", "scss", "jsx", "astro", "templ" },
     init_options = {
         userLanguages = {
             templ = "html"

@@ -84,13 +84,29 @@ return require("lazy").setup({
         dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope.nvim" } }
     },
 
-    -- other
+    -- ai
     {
         "supermaven-inc/supermaven-nvim",
         config = function()
             require("supermaven-nvim").setup({})
         end,
     },
+    {
+        "nekowasabi/aider.vim",
+        dependencies = "vim-denops/denops.vim",
+        config = function()
+            vim.g.aider_command = 'aider --no-auto-commits'
+            vim.g.aider_buffer_open_type = 'vsplit'
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'AiderOpen',
+                callback = function(args)
+                    vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { buffer = args.buf })
+                end
+            })
+        end
+    },
+
+    -- other
     "joerdav/templ.vim", -- go templ
     "christoomey/vim-tmux-navigator",
     "mbbill/undotree",
