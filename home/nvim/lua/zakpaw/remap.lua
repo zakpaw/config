@@ -44,11 +44,11 @@ vim.keymap.set("n", "gd", ":Telescope lsp_definitions<cr>", { silent = true })
 vim.keymap.set("n", "gr", ":Telescope lsp_references theme=dropdown<cr>")
 
 -- mini
-vim.keymap.set("n", "<leader>e",
+vim.keymap.set("n", "<leader>r",
     ":lua if not MiniFiles.close() then MiniFiles.open(vim.fn.expand('%:p')) end<cr>",
     { silent = true }
 )
-vim.keymap.set("n", "<leader>r", ":lua if not MiniFiles.close() then MiniFiles.open(...) end<cr>", { silent = true })
+vim.keymap.set("n", "<leader>e", ":lua if not MiniFiles.close() then MiniFiles.open(...) end<cr>", { silent = true })
 
 -- aider
 vim.api.nvim_set_keymap('n', '<leader>at', ':AiderRun<CR>', { noremap = true, silent = true })
@@ -61,4 +61,5 @@ vim.api.nvim_set_keymap('n', '<leader>aq', ':AiderExit<CR>', { noremap = true, s
 vim.keymap.set("n", "K", ":lua vim.lsp.buf.hover()<cr>")
 vim.keymap.set("n", "<F5>", ":UndotreeToggle<cr>")
 vim.keymap.set("n", "<C-e>", ":lua vim.diagnostic.open_float({'line'})<cr>")
+vim.keymap.set("n", "<C-c>", ":let @+=@%")
 -- replace everywhere cfdo %s///g

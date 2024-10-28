@@ -13,11 +13,11 @@ lsp_config.html.setup({
 
 lsp_config.htmx.setup({
     capabilities = capabilities,
-    filetypes = { "html", "templ" },
+    filetypes = { "html", "templ", "astro" },
 })
 
 -- github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-lsp_config["pyright"].setup {
+lsp_config.pyright.setup {
     capabilities = capabilities,
     settings = {
         python = {
@@ -29,11 +29,13 @@ lsp_config["pyright"].setup {
         }
     }
 }
-lsp_config["lua_ls"].setup {
+
+lsp_config.lua_ls.setup {
     capabilities = capabilities,
     settings = { Lua = { diagnostics = { globals = { "vim" } } } },
 }
-lsp_config["tailwindcss"].setup {
+
+lsp_config.tailwindcss.setup {
     capabilities = capabilities,
     filetypes = { "css", "postcss", "sass", "scss", "jsx", "astro", "templ" },
     init_options = {
@@ -50,6 +52,7 @@ lsp_config["tailwindcss"].setup {
     },
 }
 local lang_servers = {
+    "astro",
     "marksman",
     "bashls",
     "cssls",
