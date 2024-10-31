@@ -4,7 +4,7 @@ import = ["/Users/pawel/.config/alacritty/catppuccin-mocha.toml"]
 TERM = "xterm-256color"
 
 [font]
-size = 16
+size = 14
 
 [font.normal]
 family = "JetBrainsMono Nerd Font Mono"
@@ -14,6 +14,6 @@ style = "Bold"
 decorations = "buttonless"
 dynamic_padding = false
 dynamic_title = false
-opacity = 0.8
+opacity = 0.9
 startup_mode = "Maximized"
 title = "alacritty"
