@@ -1,14 +1,16 @@
+vim.o.background = "dark"
+vim.cmd.colorscheme "gruvbox"
 -- vim.o.background = "light"
 -- vim.cmd.colorscheme "gruvbox"
 
-require("catppuccin").setup({
-    transparent_background = false,
-    flavour = "mocha",
-    styles = {
-        comments = { "italic" },
-    }
-})
-vim.cmd.colorscheme "catppuccin"
+-- require("catppuccin").setup({
+--     transparent_background = false,
+--     flavour = "mocha",
+--     styles = {
+--         comments = { "italic" },
+--     }
+-- })
+-- vim.cmd.colorscheme "catppuccin"
 
 -- transparent background
 local transparent_elements = {
