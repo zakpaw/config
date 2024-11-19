@@ -5,7 +5,9 @@ tasks:
     desc: "rebuilds the configuration if `init` was launched at least once."
     preconditions:
       - nix --version
-    cmd: darwin-rebuild switch --flake .
+    cmd: |
+      darwin-rebuild switch --flake .
+      sudo chown -R 501:20 "/Users/pawel/.local/"
 
   init:
     desc: "build & apply the system configuration."
@@ -20,4 +22,6 @@ tasks:
     desc: "build & apply the home-manager configuration."
     preconditions:
       - nix --version
-    cmd: nix run home-manager/master -- switch --flake .#pawel
+    cmd: |
+      nix run home-manager/master -- switch --flake .#pawel
+      sudo chown -R 501:20 "/Users/pawel/.local/"

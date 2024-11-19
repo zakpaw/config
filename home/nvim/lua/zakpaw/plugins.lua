@@ -91,22 +91,48 @@ return require("lazy").setup({
             require("supermaven-nvim").setup({})
         end,
     },
+    { "nvim-lua/plenary.nvim" },
     {
-        "nekowasabi/aider.vim",
-        dependencies = "vim-denops/denops.vim",
-        config = function()
-            vim.g.aider_command = 'aider --model gemini/gemini-1.5-pro-002 --no-auto-commits'
-            vim.g.aider_buffer_open_type = 'floating'
-            vim.g.aider_floatwin_width = 110
-            vim.g.aider_floatwin_height = 40
-            vim.api.nvim_create_autocmd('User', {
-                pattern = 'AiderOpen',
-                callback = function(args)
-                    vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { buffer = args.buf })
-                    vim.keymap.set('n', '<Esc>', '<cmd>AiderHide<CR>', { buffer = args.buf })
-                end
-            })
-        end
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        version = false, -- set this if you want to always pull the latest change
+        opts = {
+            -- add any opts here
+        },
+        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+        build = "make",
+        -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            {
+                -- support for image pasting
+                "HakonHarnes/img-clip.nvim",
+                event = "VeryLazy",
+                opts = {
+                    -- recommended settings
+                    default = {
+                        embed_image_as_base64 = false,
+                        prompt_for_file_name = false,
+                        drag_and_drop = {
+                            insert_mode = true,
+                        },
+                    },
+                },
+            },
+            {
+                -- Make sure to set this up properly if you have lazy=true
+                'MeanderingProgrammer/render-markdown.nvim',
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
+            },
+        },
     },
 
     -- other
@@ -134,13 +160,13 @@ return require("lazy").setup({
     },
 
     -- theme
-    { "catppuccin/nvim", as = "catppuccin" },
-    -- {
-    --     "ellisonleao/gruvbox.nvim",
-    --     priority = 1000,
-    --     config = true,
-    --     opts = ...
-    -- },
+    -- { "catppuccin/nvim",          as = "catppuccin" },
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = true,
+        opts = ...
+    },
     "kyazdani42/nvim-web-devicons",
     {
         "nvim-lualine/lualine.nvim",
