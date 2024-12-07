@@ -6,6 +6,7 @@ tasks:
     preconditions:
       - nix --version
     cmd: |
+      nix flake update
       darwin-rebuild switch --flake .
       sudo chown -R 501:20 "/Users/pawel/.local/"
 

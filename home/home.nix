@@ -2,6 +2,8 @@
 {
   pkgs,
   devenv,
+  lib,
+  config,
   ...
 }: {
   home.stateVersion = "23.11";
@@ -9,6 +11,7 @@
   imports = [
     ./zsh/zsh.nix
     ./tmux/tmux.nix
+    ./nu/nu.nix
   ];
 
   home.file.".config/alacritty".source = ./alacritty;
@@ -24,10 +27,9 @@
     benthos
     cachix
     devbox
+    podman
 
     # utils
-    deno
-    cargo
     rustup
     nodejs_22
     curl
@@ -45,6 +47,8 @@
     glow
     btop
     nix-output-monitor
+
+    # lsp
     vscode-langservers-extracted
   ];
 
