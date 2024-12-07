@@ -5,6 +5,7 @@
             $env.STARSHIP_SHELL = "nu"
             $env.config = {
               show_banner: false,
+              edit_mode: vi
             }
 
             let carapace_completer = {|spans|
