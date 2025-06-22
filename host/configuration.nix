@@ -9,6 +9,9 @@ pkgs,
         ./icons/icons.nix
     ];
 
+    # Fix GID mismatch for existing Nix installation
+    ids.gids.nixbld = 30000;
+
     # core
     nix = {
         package = pkgs.nix;
@@ -26,7 +29,6 @@ pkgs,
             };
         };
     };
-    services.nix-daemon.enable = true;
 
     # host & users configuration
     networking.hostName = hostname;
@@ -40,18 +42,15 @@ pkgs,
 
     # system
     system = {
-        # activationScripts are executed on every system boot or run `darwin-rebuild`.
-        stateVersion = 5;
-        activationScripts.postUserActivation.text = ''
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-      '';
-
+        stateVersion = 6;
+        primaryUser = username;
+        activationScripts.activateSettings.text = ''
+            sudo -u ${username} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+        '';
         defaults = {
             dock.autohide = true;
             menuExtraClock.Show24Hour = true;
             NSGlobalDomain.KeyRepeat = 2;
         };
     };
-
-    security.pam.enableSudoTouchIdAuth = true;
 }

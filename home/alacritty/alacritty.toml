@@ -12,6 +12,6 @@ style = "Bold"
 decorations = "buttonless"
 dynamic_padding = false
 dynamic_title = false
-opacity = 0.9
+opacity = 0.99
 startup_mode = "Maximized"
 title = "alacritty"
